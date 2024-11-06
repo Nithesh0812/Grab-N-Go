@@ -12,7 +12,7 @@
 <ul>
     <li><strong>PHP:</strong> Version 7.3 or higher</li>
     <li><strong>Composer:</strong> Dependency manager for PHP</li>
-    <li><strong>Database:</strong> MySQL, PostgreSQL, SQLite, etc.</li>
+    <li><strong>Database:</strong> MySQL.</li>
     <li><strong>Node.js and npm:</strong> For asset compilation (optional)</li>
 </ul>
 
