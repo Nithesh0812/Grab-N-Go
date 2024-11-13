@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
-    <title>DELICIOUS EATS</title>
+    <title>GRABNGO</title>
     @include('home.css')
     <!-- Additional CSS Files -->
 
