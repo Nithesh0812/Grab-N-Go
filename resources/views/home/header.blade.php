@@ -9,7 +9,7 @@
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
                     <a href="/" class="logo">
-                        <h5 style="color: black">DELICIOUS EATS</h5>
+                        <h5 style="color: black">GRABNGO</h5>
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
