@@ -168,7 +168,7 @@ class HomeController extends Controller
                 $cart->save();
                 Alert::success('Added to cart succesfully','we have added product to your cart');
 
-                return redirect ()->back();
+                return redirect()->intended("/");
 
 
 
@@ -195,12 +195,12 @@ class HomeController extends Controller
                 $cart->image=$product->image;
                 $cart->Product_id=$product->id;
                 $cart->quantity=$request->quantity;
-
+                $cart->requests=$request->note;
 
                 $cart ->save();
                 Alert::success('Added to cart succesfully','we have added product to your cart');
 
-                return redirect ()->back();
+                return redirect()->intended("/");
 
             }
 
@@ -260,6 +260,7 @@ class HomeController extends Controller
             $order->price=$data->price;
             $order->image=$data->image;
             $order->product_id=$data->product_id;
+            $order->requests=$data->requests;
             $order->payment_status='cash ';
             $order->delivery_status='processing';
 
@@ -349,6 +350,7 @@ class HomeController extends Controller
             $order->price=$data->price;
             $order->image=$data->image;
             $order->product_id=$data->product_id;
+            $order->requests=$data->requests;
             $order->payment_status='Paid';
             $order->delivery_status='processing';
 
