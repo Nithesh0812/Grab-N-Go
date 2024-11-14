@@ -143,10 +143,18 @@ class AdminController extends Controller
         $order -> delivery_status='delivered';
         $order -> payment_status='Order complete';
         $order->save();
-
+        $details=
+            [
+                'greeting'=>'Hi customer,',
+                'firstline'=>'Your order is delivered. Thank you for ordering.',
+                'body'=>'Hope you found everything well',
+                'button'=>'',
+                'url'=>'',
+                'lastline'=>'',
+            ];
+        Notification::send($order, new GtaSendEmail($details));
         return redirect()->back();
-
-
+        
     }
 
     public function print($id)
