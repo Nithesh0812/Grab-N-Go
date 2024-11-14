@@ -6,17 +6,19 @@
     @if (is_null($universityValue))
         <a href="/product_search?_token={{ csrf_token() }}&search=burger+king" class="button burger-king">BURGER KING</a>
         <a href="/product_search?_token={{ csrf_token() }}&search=chick-fil-a" class="button chick-fil-a">CHICK FIL A</a>
+                <a href="/product_search?_token={{ csrf_token() }}&search=fuzzys" class="button fuzzys">FUZZYS</a>
         <a href="/product_search?_token={{ csrf_token() }}&search=starbucks" class="button starbucks">STARBUCKS</a>
         <a href="/product_search?_token={{ csrf_token() }}&search=basic" class="button basic">BASIC</a>
-        <a href="/product_search?_token={{ csrf_token() }}&search=fuzzys" class="button fuzzys">FUZZYS</a>
+
 
     @elseif ($universityValue === 'Discovery Park Campus')
         <a href="/product_search?_token={{ csrf_token() }}&search=basic" class="button basic">BASIC</a>
     @elseif ($universityValue === 'UNT Main Campus')
         <a href="/product_search?_token={{ csrf_token() }}&search=burger+king" class="button burger-king">BURGER KING</a>
+        <a href="/product_search?_token={{ csrf_token() }}&search=fuzzys" class="button fuzzys">FUZZYS</a>
         <a href="/product_search?_token={{ csrf_token() }}&search=chick-fil-a" class="button chick-fil-a">CHICK FIL A</a>
         <a href="/product_search?_token={{ csrf_token() }}&search=starbucks" class="button starbucks">STARBUCKS</a>
-        <a href="/product_search?_token={{ csrf_token() }}&search=fuzzys" class="button fuzzys">FUZZYS</a>
+        
     @endif
 </div>
 
