@@ -7,26 +7,26 @@
     <style>
         body {
             display: flex;
-            flex-direction: column; /* Stack items vertically */
+            flex-direction: column; 
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Full viewport height */
+            height: 100vh; 
             font-family: Arial, sans-serif;
-            background-color: #f0f4f8;
+            background-color: #f0f4e8;
             margin: 0;
         }
 
         h1 {
             text-align: center;
-            color: #333;
-            margin-bottom: 20px; /* Space between header and form */
+            color: #331;
+            margin-bottom: 23px; /* Space between header and form */
         }
 
         form {
             max-width: 400px;
             width: 100%; /* Full width for small screens */
             background: white;
-            padding: 20px;
+            padding: 18px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
