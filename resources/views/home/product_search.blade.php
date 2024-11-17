@@ -73,6 +73,14 @@
                                @csrf
                                <div class="row">
                                    <div class="col col-md-4"> <input type="number" name="quantity" value="1" min="1" style="width: 100px; color: black"></div>
+                                   <div class="col col-md-4">
+                                    <label for="time" style="color: black">Time:</label>
+                                        <select name="time" id="time" style="width: 60px;color: black ">
+                                            @foreach($times as $time)
+                                                <option style="width: 60px;color: black " value="{{ $time }}">{{ $time }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                    <div class="col col-md-4"><input type="submit" value="Add To Cart"></div>
                                </div>
                            </form>
@@ -177,4 +185,3 @@
 
 </body>
 </html>
-
