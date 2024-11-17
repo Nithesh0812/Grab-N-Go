@@ -14,6 +14,7 @@ use App\Models\Cart;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\order;
 use Stripe;
+use Carbon\Carbon;
 
 
 class HomeController extends Controller
@@ -49,8 +50,17 @@ class HomeController extends Controller
             // For unauthenticated users, show all products
             $product = Product::paginate(9); // Default to all products
         }
-    
-        return view('home.userpage', compact('product', 'universityValue'));
+        $current = Carbon::now();
+        $current = $current->addMinutes(30);
+        $minutes = $current->minute;
+
+            // Generate times array with 4 intervals of 30 minutes
+            $times = [];
+            for ($i = 0; $i < 4; $i++) {
+                $times[] = $current->format('H:i');
+                $current = $current->addMinutes(30);
+            }
+        return view('home.userpage', compact('product', 'universityValue','times'));
     }
     
     
@@ -137,8 +147,17 @@ class HomeController extends Controller
     {
         $id = $request->input('product_id');
         $product= product::find($id);
+        $current = Carbon::now();
+        $current = $current->addMinutes(30);
+        $minutes = $current->minute;
 
-        return view('home.product_details',compact('product'));
+    // Generate times array with 4 intervals of 30 minutes
+    $times = [];
+    for ($i = 0; $i < 4; $i++) {
+        $times[] = $current->format('H:i');
+        $current = $current->addMinutes(30);
+    }
+        return view('home.product_details',compact('product','times'));
     }
 
     public function add_cart(Request $request, $id)
@@ -196,7 +215,7 @@ class HomeController extends Controller
                 $cart->Product_id=$product->id;
                 $cart->quantity=$request->quantity;
                 $cart->requests=$request->note;
-
+                $cart->pick_up_time=$request->time;
                 $cart ->save();
                 Alert::success('Added to cart succesfully','we have added product to your cart');
 
@@ -261,6 +280,7 @@ class HomeController extends Controller
             $order->image=$data->image;
             $order->product_id=$data->product_id;
             $order->requests=$data->requests;
+            $order->pick_up_time=$data->pick_up_time;
             $order->payment_status='cash ';
             $order->delivery_status='processing';
 
@@ -311,8 +331,18 @@ class HomeController extends Controller
     {
         $search_text=$request->search;
         $product=product::where('title','LIKE',"%$search_text%")->orWhere('catagory','LIKE',"%$search_text%")->paginate(9);
+        $current = Carbon::now();
+        $current = $current->addMinutes(30);
+        $minutes = $current->minute;
 
-        return view('home.product_search',compact('product','search_text'));
+    // Generate times array with 4 intervals of 30 minutes
+    $times = [];
+    for ($i = 0; $i < 4; $i++) {
+        $times[] = $current->format('H:i');
+        $current = $current->addMinutes(30);
+    }
+
+        return view('home.product_search',compact('product','search_text','times'));
     }
 
 
@@ -351,6 +381,7 @@ class HomeController extends Controller
             $order->image=$data->image;
             $order->product_id=$data->product_id;
             $order->requests=$data->requests;
+            $order->pick_up_time=$data->pick_up_time;
             $order->payment_status='Paid';
             $order->delivery_status='processing';
 
@@ -369,8 +400,17 @@ class HomeController extends Controller
     public function listen($id)
     {
         $product= product::find($id);
+        $current = Carbon::now();
+        $current = $current->addMinutes(30);
+        $minutes = $current->minute;
 
-        return view('home.listen',compact('product'));
+    // Generate times array with 4 intervals of 30 minutes
+    $times = [];
+    for ($i = 0; $i < 4; $i++) {
+        $times[] = $current->format('H:i');
+        $current = $current->addMinutes(30);
+    }
+        return view('home.listen',compact('product','times'));
     }
 
     public function mpesaa()
