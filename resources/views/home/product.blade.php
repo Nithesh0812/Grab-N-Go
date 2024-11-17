@@ -6,19 +6,17 @@
     @if (is_null($universityValue))
         <a href="/product_search?_token={{ csrf_token() }}&search=burger+king" class="button burger-king">BURGER KING</a>
         <a href="/product_search?_token={{ csrf_token() }}&search=chick-fil-a" class="button chick-fil-a">CHICK FIL A</a>
-        <a href="/product_search?_token={{ csrf_token() }}&search=fuzzys" class="button fuzzys">FUZZYS</a>
         <a href="/product_search?_token={{ csrf_token() }}&search=starbucks" class="button starbucks">STARBUCKS</a>
         <a href="/product_search?_token={{ csrf_token() }}&search=basic" class="button basic">BASIC</a>
-
+        <a href="/product_search?_token={{ csrf_token() }}&search=fuzzys" class="button fuzzys">FUZZYS</a>
 
     @elseif ($universityValue === 'Discovery Park Campus')
         <a href="/product_search?_token={{ csrf_token() }}&search=basic" class="button basic">BASIC</a>
     @elseif ($universityValue === 'UNT Main Campus')
         <a href="/product_search?_token={{ csrf_token() }}&search=burger+king" class="button burger-king">BURGER KING</a>
         <a href="/product_search?_token={{ csrf_token() }}&search=chick-fil-a" class="button chick-fil-a">CHICK FIL A</a>
-        <a href="/product_search?_token={{ csrf_token() }}&search=fuzzys" class="button fuzzys">FUZZYS</a>
         <a href="/product_search?_token={{ csrf_token() }}&search=starbucks" class="button starbucks">STARBUCKS</a>
-        
+        <a href="/product_search?_token={{ csrf_token() }}&search=fuzzys" class="button fuzzys">FUZZYS</a>
     @endif
 </div>
 
@@ -69,7 +67,15 @@
                             <form action="{{url('add_cart',$products->id)}}" method="POST">
                                @csrf
                                <div class="row">
-                                   <div class="col col-md-4"> <input type="number" name="quantity" value="1" min="1" style="width: 100px; color: black"></div>
+                                   <div class="col col-md-4"> <input type="number" name="quantity" value="1" min="1" style="width: 80px; color: black"></div>
+                                   <div class="col col-md-4" style= "width: 20px>
+                                    <label for="time" style="color: black">Time:</label>
+                                        <select name="time" id="time" style="color: black">
+                                            @foreach($times as $time)
+                                                <option style="color: black" value="{{ $time }}">{{ $time }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                    <div class="col col-md-4"><input type="submit" value="Add To Cart"></div>
                                </div>
                            </form>
