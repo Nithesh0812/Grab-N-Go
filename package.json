@@ -17,7 +17,6 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
-        "epic-spinners": "^2.0.0",
-        "php": "^1.1.0"
+        "epic-spinners": "^2.0.0"
     }
 }
