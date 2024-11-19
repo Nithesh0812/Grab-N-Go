@@ -200,3 +200,4 @@ class AdminController extends Controller
         return view('admin.order',compact('order'));
     }
 }
+
