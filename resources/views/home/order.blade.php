@@ -46,13 +46,7 @@
         <td data-label="Quantity">{{$order->quantity}}</td>
         <td data-label="Price">$.{{$order->price}}</td>
         <td data-label="Payment Status">{{$order->payment_status}}</td>
-        <td data-label="Created At">
-            <?php
-                $createdAt = new DateTime($order->created_at);
-                $createdAt->add(new DateInterval('PT30M')); // Add 30 minutes
-                echo $createdAt->format('H:i'); // Format as HH:mm
-            ?>
-        </td>
+        <td data-label="pick-up Time">{{$order->pick_up_time}}</td>
         <td data-label="Delivery Status">{{$order->delivery_status}}</td>
         <td data-label="Image"><img style="width: 100px" src="product/{{$order->image}}"></td>
         <td>

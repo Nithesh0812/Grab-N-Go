@@ -60,6 +60,7 @@
                         <th class="th">Product title</th>
                         <th class="th">Quantity</th>
                         <th class="th">Price</th>
+                        <th class="th">Requests</th>
                         <th class="th">Payment Status</th>
                         <th class="th">Delivery status</th>
                         <th class="th">Image</th>
@@ -76,6 +77,7 @@
                         <td>{{$order->product_title}}</td>
                         <td>{{$order->quantity}}</td>
                         <td>{{$order->price}}</td>
+                        <td>{{$order->requests}}</td>
                         <td>{{$order->payment_status}}</td>
                         <td>{{$order->delivery_status}}</td>
                         <td><img class="img" src="/product/{{$order->image}}"></td>
@@ -111,3 +113,4 @@
     @include('admin.script') <!-- End custom js for this page -->
 </body>
 </html>
+
