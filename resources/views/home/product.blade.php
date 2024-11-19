@@ -67,16 +67,16 @@
                             <form action="{{url('add_cart',$products->id)}}" method="POST">
                                @csrf
                                <div class="row">
-                                   <div class="col col-md-4"> <input type="number" name="quantity" value="1" min="1" style="width: 80px; color: black"></div>
-                                   <div class="col col-md-4" style= "width: 20px>
-                                    <label for="time" style="color: black">Time:</label>
-                                        <select name="time" id="time" style="color: black">
+                                   <div class="col col-md-4" style = "padding-left: 0 rem; padding-right: 0 rem;width: 40px "> <input type="number" name="quantity" value="1" min="1" style="width: 80px; color: black"></div>
+                                   <div style="width: 60px;color: black; margin: 0px;">
+                                    <label for="time" style="color: black; padding-right: 0 rem;padding-left: 0 rem; font-weight: bold;">Time:</label>
+                                        <select name="time" id="time" style="width: 60px;color: black ">
                                             @foreach($times as $time)
-                                                <option style="color: black" value="{{ $time }}">{{ $time }}</option>
+                                                <option style="width: 20px;color: black " value="{{ $time }}">{{ $time }}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                   <div class="col col-md-4"><input type="submit" value="Add To Cart"></div>
+                                   <div class="col col-md-4" style = "padding-left: 0 rem; padding-right: 0 rem; "><input type="submit" value="Add To Cart"></div>
                                </div>
                            </form>
                         </div>
