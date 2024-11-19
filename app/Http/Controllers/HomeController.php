@@ -68,7 +68,16 @@ class HomeController extends Controller
     public function redirect()
     {
         $usertype=Auth::user()->usertype;
+        $current = Carbon::now();
+        $current = $current->addMinutes(30);
+        $minutes = $current->minute;
 
+    // Generate times array with 4 intervals of 30 minutes
+    $times = [];
+    for ($i = 0; $i < 4; $i++) {
+        $times[] = $current->format('H:i');
+        $current = $current->addMinutes(30);
+    }
         if ($usertype=='1')
         {
             $total_product=product::all()->count();
@@ -121,7 +130,7 @@ class HomeController extends Controller
             $product = Product::paginate(9); // Default to all products
         }
     
-        return view('home.userpage', compact('product', 'universityValue'));
+        return view('home.userpage', compact('product', 'universityValue','times'));
         }
     }
     public function university(Request $request)
