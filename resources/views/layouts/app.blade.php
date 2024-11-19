@@ -9,6 +9,8 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link href="https://67211654735dd822d79ac35c--tangerine-genie-222549.netlify.app/build/assets/app-c208tcty.css" rel="stylesheet">
+        <link href="https://67211654735dd822d79ac35c--tangerine-genie-222549.netlify.app/build/assets/app-z-rg4txu.js" rel="stylesheet">
 
         <!-- Scripts -->
 

@@ -26,7 +26,7 @@
                 <div style="color: white" class="text">{{$product->play}} <span class="typing-2"></span></div>
                 <div class="text">
                     @if($product ->discount_price!=null)
-                        <h6 style="margin: 10px;color:limegreen">
+                        <h6 style="margin: 10px;color:black">
                             Discount Price  :
                             $. <button class="btn btn-success">{{$product->discount_price}}</button>
                         </h6>
@@ -59,7 +59,15 @@
                 <form action="{{url('add_cart',$product->id)}}" method="POST">
                     @csrf
                     <div class="row">
-                        <div class="col col-md-4"> <input type="number" name="quantity" value="1" min="1" style="width: 100px"></div>
+                        <div class="col col-md-4"> <input type="number" name="quantity" value="1" min="1" style="width: 60px"></div>
+                        <div class="col col-md-4">
+                    <label for="time">Time:</label>
+                        <select name="time" id="time" style="width: 40px">
+                            @foreach($times as $time)
+                                <option style="width: 40px;color: black " value="{{ $time }}">{{ $time }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                         <div class="col col-md-4"><input type="submit" value="Add To Cart"></div>
                     </div>
                 </form>
