@@ -1,4 +1,4 @@
-name: Laravel
+name: userone
 
 on:
   push:
@@ -16,8 +16,8 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ROOT_PASSWORD: secret
-          MYSQL_DATABASE: test_database
+          MYSQL_ROOT_PASSWORD: userone@gmail
+          MYSQL_DATABASE: userone
         ports:
           - 3306:3306
         options: >-
