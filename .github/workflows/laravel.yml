@@ -29,9 +29,9 @@ jobs:
       uses: actions/setup-mysql@v2
       with:
         mysql-version: '8.0' # Specify your desired MySQL version
-        database: laravel_test
-        username: root
-        password: root
+        database: userone
+        username: userone
+        password: userone@gmail
 
     # Step 5: Run migrations
     - name: Run Migrations
