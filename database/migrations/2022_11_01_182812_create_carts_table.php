@@ -37,6 +37,8 @@ return new class extends Migration
 
             $table->string('product_id')->nullable();
 
+            $table->string('pick_up_time')->nullable();
+
 
 
             $table->timestamps();
