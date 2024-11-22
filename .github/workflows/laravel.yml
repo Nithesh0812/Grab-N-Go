@@ -50,7 +50,9 @@ jobs:
           sed -i 's/DB_PASSWORD=/DB_PASSWORD=secret/' .env
 
       - name: Run database migrations
-        run: php artisan migrate --env=testing
+        run: php artisan cache:clear
+             php artisan config:cache
+             php artisan --env=testing migrate
 
       - name: Run tests
-        run: php artisan test --env=testing
+        run: php artisan--env=testing test
