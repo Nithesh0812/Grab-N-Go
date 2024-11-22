@@ -28,6 +28,8 @@ return new class extends Migration
 
             $table->string('quantity')->nullable();
 
+            $table->string('requests')->nullable();
+
             $table->string('image')->nullable();
 
             $table->string('user_id')->nullable();
