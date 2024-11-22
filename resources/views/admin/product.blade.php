@@ -98,10 +98,10 @@
                 <div class="div_design" >
 
                     <label>product resturant</label>
-                    <select class="text_color" name="catagory">
-                        <option value="" selected="">Add catagory here</option>
-                        @foreach($category as $catagory)
-                            <option value="{{$catagory -> catagory_name}}">{{$catagory -> category_name}}</option>
+                    <select class="text_color" name="category">
+                        <option value="" selected="">Add category here</option>
+                        @foreach($category as $category)
+                            <option value="{{$category -> category_name}}">{{$category -> category_name}}</option>
                         @endforeach
                     </select>
                 </div>

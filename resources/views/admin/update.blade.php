@@ -99,11 +99,11 @@
 
                     <div class="div_design" >
 
-                        <label>product Catagory</label>
-                        <select class="text_color" name="catagory" style="color: black">
-                            <option value="{{$product->catagory}}" selected="" style="color: black">{{$product->catagory}}</option>
-                            @foreach($catagory as $catagory)
-                                <option value="{{$catagory -> catagory_name}}">{{$catagory -> category_name}}</option>
+                        <label>product category</label>
+                        <select class="text_color" name="category" style="color: black">
+                            <option value="{{$product->category}}" selected="" style="color: black">{{$product->category}}</option>
+                            @foreach($category as $category)
+                                <option value="{{$category -> category_name}}">{{$category -> category_name}}</option>
                             @endforeach
                         </select>
                     </div>

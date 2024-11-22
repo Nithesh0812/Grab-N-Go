@@ -67,7 +67,7 @@
                     <th class="th">Product Title</th>
                     <th class="th">Product Description</th>
                     <th class="th">image</th>
-                    <th class="th">Catagory</th>
+                    <th class="th">category</th>
                     <th class="th">Quantity</th>
                     <th class="th">Price</th>
                     <th class="th">Discount Price</th>
@@ -79,7 +79,7 @@
                     <td>{{$product->title}}</td>
                     <td>{{$product->description}}</td>
                     <td><img class="img" src="/product/{{$product->image}}"></td>
-                    <td>{{$product->catagory}}</td>
+                    <td>{{$product->category}}</td>
                     <td>{{$product->quantity}}</td>
                     <td>{{$product->price}}</td>
                     <td>{{$product->discount_price}}</td>

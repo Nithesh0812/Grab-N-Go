@@ -47,7 +47,7 @@
 
                 <p style="color: limegreen;margin: 20px">
                     CATEGORY:
-                    {{$product->catagory}}
+                    {{$product->category}}
                 </p>
                 <h6 style="color: limegreen;margin: 20px">
                     QUANTITY:

@@ -16,21 +16,21 @@ use App\Notifications\GtaSendEmail;
 
 class AdminController extends Controller
 {
-    public function view_catagory()
+    public function view_category()
     {
         $data=category::all();
-        return view('admin.catagory',compact('data'));
+        return view('admin.category',compact('data'));
     }
 
-    public function add_catagory(Request $request)
+    public function add_category(Request $request)
     {
         $data= new category;
-        $data-> catagory_name= $request->catagory;
+        $data-> category_name= $request->category;
         $data->save();
-        return redirect()->back()->with('message','Catagory Added Successfully');
+        return redirect()->back()->with('message','category Added Successfully');
 
     }
-    public function delete_catagory($id)
+    public function delete_category($id)
     {
         $data=category::find($id);
         $data->Delete();
@@ -49,7 +49,7 @@ class AdminController extends Controller
         $product->title = $request->title;
         $product->description = $request->description;
         $product->image = $request->image;
-        $product->catagory = $request->catagory;
+        $product->category = $request->category;
         $product->quantity = $request->quantity;
         $product->price = $request->price;
         $product->discount_price = $request->discount_price;
@@ -97,9 +97,9 @@ class AdminController extends Controller
     public function update_product($id)
     {
         $product=product::find($id);
-        $catagory=category::all();
+        $category=category::all();
 
-        return view('admin.update', compact('product','catagory'));
+        return view('admin.update', compact('product','category'));
     }
     public  function update_product_confirm(Request $request, $id)
     {
@@ -107,7 +107,7 @@ class AdminController extends Controller
 
         $product->title=$request->title;
         $product->description=$request->descritpion;
-        $product->catagory=$request->catagory;
+        $product->category=$request->category;
         $product->quantity=$request->quantity;
         $product->price=$request->price;
         $product->discount_price=$request->discount_price;

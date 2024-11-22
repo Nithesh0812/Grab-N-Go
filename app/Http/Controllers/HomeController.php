@@ -42,7 +42,7 @@ class HomeController extends Controller
                 $restaurantNames = $campus->restaurants()->pluck('name')->map('strtolower')->toArray();
     
                 // Retrieve products that belong to these restaurant names
-                $product = Product::whereIn('catagory', $restaurantNames)->paginate(9);
+                $product = Product::whereIn('category', $restaurantNames)->paginate(9);
             } else {
                 $product = Product::paginate(9); // Default to all products if campus not found
             }
@@ -121,7 +121,7 @@ class HomeController extends Controller
                 $restaurantNames = $campus->restaurants()->pluck('name')->map('strtolower')->toArray();
     
                 // Retrieve products that belong to these restaurant names
-                $product = Product::whereIn('catagory', $restaurantNames)->paginate(9);
+                $product = Product::whereIn('category', $restaurantNames)->paginate(9);
             } else {
                 $product = Product::paginate(9); // Default to all products if campus not found
             }
@@ -339,7 +339,7 @@ class HomeController extends Controller
     public function product_search(Request $request)
     {
         $search_text=$request->search;
-        $product=product::where('title','LIKE',"%$search_text%")->orWhere('catagory','LIKE',"%$search_text%")->paginate(9);
+        $product=product::where('title','LIKE',"%$search_text%")->orWhere('category','LIKE',"%$search_text%")->paginate(9);
         $current = Carbon::now();
         $current = $current->addMinutes(30);
         $minutes = $current->minute;
