@@ -16,7 +16,7 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ROOT_PASSWORD: userone@gmail
+          MYSQL_ROOT_PASSWORD: secret  # Use a secure password
           MYSQL_DATABASE: userone
         ports:
           - 3306:3306
@@ -50,9 +50,10 @@ jobs:
           sed -i 's/DB_PASSWORD=/DB_PASSWORD=secret/' .env
 
       - name: Run database migrations
-        run: php artisan cache:clear
-             php artisan config:cache
-             php artisan --env=testing migrate
+        run: |
+          php artisan cache:clear
+          php artisan config:cache
+          php artisan migrate --env=testing
 
       - name: Run tests
-        run: php artisan--env=testing test
+        run: php artisan test --env=testing
