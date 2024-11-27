@@ -3,17 +3,17 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - master  # Production deployment
-      - develop # Development deployment
+      - main     # Production deployment
+      - develop  # Development deployment
   pull_request:
     branches:
-      - develop # Testing deployment
+      - develop  # Testing deployment on PR to develop
+  workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
   # Development Stage
   development:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/develop'
 
     services:
       mysql:
@@ -68,7 +68,7 @@ jobs:
   # Test Stage
   testing:
     runs-on: ubuntu-latest
-    needs: development
+    needs: development # Waits for the development job to complete
 
     services:
       mysql:
@@ -98,7 +98,7 @@ jobs:
 
       - name: Set up .env for Testing
         run: |
-          cp .env.testing .env
+          cp .env.example .env
           sed -i 's/APP_ENV=production/APP_ENV=testing/' .env
           sed -i 's/APP_DEBUG=false/APP_DEBUG=true/' .env
           sed -i 's/DB_HOST=127.0.0.1/DB_HOST=mysql/' .env
@@ -123,8 +123,7 @@ jobs:
   # Production Stage
   production:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    needs: testing
+    needs: testing # Waits for the testing job to complete
 
     services:
       mysql:
@@ -154,7 +153,7 @@ jobs:
 
       - name: Set up .env for Production
         run: |
-          cp .env.production .env
+          cp .env.example .env
           sed -i 's/APP_ENV=production/APP_ENV=production/' .env
           sed -i 's/APP_DEBUG=false/APP_DEBUG=false/' .env
           sed -i 's/DB_HOST=127.0.0.1/DB_HOST=mysql/' .env
