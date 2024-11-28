@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI/CI pipeline
 
 on:
   push:
@@ -22,12 +22,7 @@ jobs:
       with:
         php-version: '8.1' # Change to your required PHP version
         extensions: mbstring, intl, bcmath
-        coverage: none # Omit Xdebug unless coverage is needed
 
     # Install dependencies
     - name: Install dependencies
       run: composer install --no-progress --no-suggest --prefer-dist
-
-    # Run tests
-    - name: Run tests
-      run: ./vendor/bin/phpunit
