@@ -1,4 +1,4 @@
-name: CI/CD Pipeline with PHP Build
+name: CI/CD Pipeline with PHP Build 
 
 on:
   push:
