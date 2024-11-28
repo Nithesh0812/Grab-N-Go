@@ -1,14 +1,14 @@
-name: CI/CI pipeline
+name: PHP Build and Setup
 
 on:
   push:
     branches:
       - main
-      - master
   pull_request:
 
 jobs:
-  build:
+  setup:
+    name: Environment Setup
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +22,17 @@ jobs:
       with:
         php-version: '8.1' # Change to your required PHP version
         extensions: mbstring, intl, bcmath
+
+  build:
+    name: Code Build
+    runs-on: ubuntu-latest
+
+    needs: setup # Ensure this job runs only after the setup job is complete
+
+    steps:
+    # Check out the code from the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
 
     # Install dependencies
     - name: Install dependencies
