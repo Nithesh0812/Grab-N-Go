@@ -26,7 +26,7 @@ jobs:
         options: >-
           --health-cmd="mysqladmin ping --host=127.0.0.1 --password=secret"
           --health-timeout=30s
-          --health-retries=5
+          --health-retries=10
 
     steps:
       - name: Checkout Code
@@ -44,16 +44,16 @@ jobs:
       - name: Set up .env for Development
         run: |
           cp .env.example .env
-          sed -i 's/APP_ENV=production/APP_ENV=local/' .env
+          sed -i 's/APP_ENV=production/APP_ENV=development/' .env
           sed -i 's/APP_DEBUG=false/APP_DEBUG=true/' .env
           sed -i 's/DB_HOST=127.0.0.1/DB_HOST=mysql/' .env
           sed -i 's/DB_DATABASE=homestead/DB_DATABASE=userone/' .env
-          sed -i 's/DB_USERNAME=homestead/DB_USERNAME=root/' .env
-          sed -i 's/DB_PASSWORD=secret/DB_PASSWORD=secret/' .env
+          sed -i 's/DB_USERNAME=root/DB_USERNAME=root/' .env
+          sed -i 's/DB_PASSWORD=/DB_PASSWORD=secret/' .env
 
       - name: Wait for MySQL
         run: |
-          for i in {1..10}; do
+          for i in {1..15}; do
             if mysqladmin ping -hmysql -uroot -psecret --silent; then
               echo "MySQL is ready"
               break
@@ -64,10 +64,17 @@ jobs:
 
       - name: Test MySQL Connectivity
         run: |
-          mysql -hmysql -uroot -psecret -e "SHOW DATABASES;"
+          for i in {1..10}; do
+            if mysql -hmysql -uroot -psecret -e "SHOW DATABASES;"; then
+              echo "Connection successful!"
+              break
+            fi
+            echo "Retrying MySQL connection..."
+            sleep 5
+          done
 
       - name: Run Tests
-        run: php artisan test --env=local
+        run: php artisan test --env=development
 
   # Testing Stage
   testing:
@@ -85,7 +92,7 @@ jobs:
         options: >-
           --health-cmd="mysqladmin ping --host=127.0.0.1 --password=secret"
           --health-timeout=30s
-          --health-retries=5
+          --health-retries=10
 
     steps:
       - name: Checkout Code
@@ -107,12 +114,12 @@ jobs:
           sed -i 's/APP_DEBUG=false/APP_DEBUG=true/' .env
           sed -i 's/DB_HOST=127.0.0.1/DB_HOST=mysql/' .env
           sed -i 's/DB_DATABASE=homestead/DB_DATABASE=userone/' .env
-          sed -i 's/DB_USERNAME=homestead/DB_USERNAME=root/' .env
-          sed -i 's/DB_PASSWORD=secret/DB_PASSWORD=secret/' .env
+          sed -i 's/DB_USERNAME=root/DB_USERNAME=root/' .env
+          sed -i 's/DB_PASSWORD=/DB_PASSWORD=secret/' .env
 
       - name: Wait for MySQL
         run: |
-          for i in {1..10}; do
+          for i in {1..15}; do
             if mysqladmin ping -hmysql -uroot -psecret --silent; then
               echo "MySQL is ready"
               break
@@ -140,7 +147,7 @@ jobs:
         options: >-
           --health-cmd="mysqladmin ping --host=127.0.0.1 --password=secret"
           --health-timeout=30s
-          --health-retries=5
+          --health-retries=10
 
     steps:
       - name: Checkout Code
@@ -162,11 +169,22 @@ jobs:
           sed -i 's/APP_DEBUG=false/APP_DEBUG=false/' .env
           sed -i 's/DB_HOST=127.0.0.1/DB_HOST=mysql/' .env
           sed -i 's/DB_DATABASE=homestead/DB_DATABASE=userone/' .env
-          sed -i 's/DB_USERNAME=homestead/DB_USERNAME=root/' .env
-          sed -i 's/DB_PASSWORD=secret/DB_PASSWORD=secret/' .env
+          sed -i 's/DB_USERNAME=root/DB_USERNAME=root/' .env
+          sed -i 's/DB_PASSWORD=/DB_PASSWORD=secret/' .env
 
-      - name: Deploy to Production
+      - name: Wait for MySQL
         run: |
-          php artisan migrate --force
-          php artisan cache:clear
-          php artisan config:cache
+          for i in {1..15}; do
+            if mysqladmin ping -hmysql -uroot -psecret --silent; then
+              echo "MySQL is ready"
+              break
+            fi
+            echo "Waiting for MySQL..."
+            sleep 5
+          done
+
+      - name: Run Migrations and Seeders
+        run: php artisan migrate --force --seed
+
+      - name: Deploy Application
+        run: echo "Production deployment steps here!"
