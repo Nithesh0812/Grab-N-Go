@@ -16,7 +16,7 @@ class ContactController extends Controller
 
     public function submit(ContactRequest $request)
     {
-        Mail::to('tonnycooperate@gmail.com')->send(new ContactMail($request->name, $request->email, $request->content));
+        Mail::to('swproject17@gmail.com')->send(new ContactMail($request->name, $request->email, $request->content));
         return view('contact.success');
     }
 }
