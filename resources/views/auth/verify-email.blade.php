@@ -26,12 +26,11 @@
                     </div>
                 </form>
 
-                <div class="flex items-center">
+                <div class="flex items-center space-x-2">
                     <a href="{{ route('profile.show') }}" class="underline text-sm text-gray-600 hover:text-gray-900">
                         {{ __('Edit Profile') }}
                     </a>
-
-                    <form method="POST" action="{{ route('logout') }}" class="inline ml-2">
+                    <form method="POST" action="{{ route('logout') }}" class="inline">
                         @csrf
                         <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
                             {{ __('Log Out') }}
