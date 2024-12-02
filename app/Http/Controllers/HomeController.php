@@ -292,7 +292,7 @@ class HomeController extends Controller
             $order->pick_up_time=$data->pick_up_time;
             $order->payment_status='cash ';
             $order->delivery_status='processing';
-
+            $order->wrong='';
             $order->save();
 
             $cart_id=$data->id;
