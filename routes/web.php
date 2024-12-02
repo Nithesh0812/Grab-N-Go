@@ -17,9 +17,7 @@ use App\Http\Controllers\ContactController;
 
 
 route::get('/',[HomeController::class,'index']);
-Route::middleware(['force.https'])->group(function () {
-    Route::get('/', [HomeController::class, 'index']);
-});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
