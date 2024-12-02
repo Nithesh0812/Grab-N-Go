@@ -48,7 +48,7 @@ jobs:
       - name: Wait for MySQL
         run: |
           for i in {1..15}; do
-            if mysqladmin ping -hmysql -uroot -psecret --silent; then
+            if mysqladmin ping -hyhrz9vns005e0734.cbetxkdyhwsb.us-east-1.rds.amazonaws.com -uer4am30ec35y6cw6 -pptnduj95jq8h3r3l --silent; then
               echo "MySQL is ready"
               break
             fi
@@ -58,7 +58,7 @@ jobs:
       - name: Test MySQL Connectivity
         run: |
           for i in {1..10}; do
-            if mysql -hmysql -uroot -psecret -e "SHOW DATABASES;"; then
+            if mysql --hyhrz9vns005e0734.cbetxkdyhwsb.us-east-1.rds.amazonaws.com -uer4am30ec35y6cw6 -pptnduj95jq8h3r3l -e "SHOW DATABASES;"; then
               echo "Connection successful!"
               break
             fi
