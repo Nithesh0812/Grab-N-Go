@@ -48,9 +48,9 @@ class CampusRestaurantSeeder extends Seeder
                 DB::unprepared($sql);
                 Log::info('Successfully seeded campuses and restaurants from SQL file.');
             }
-            catch{
+            catch(\Exception $e){
                   Log::error('Error seeding from SQL file: ' . $e->getMessage());
-            }
+            }}
 
         Log::info('Seeding completed successfully.');
     }
