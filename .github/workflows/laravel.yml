@@ -3,11 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main     # Production deployment
-      - develop  # Development deployment
-  pull_request:
-    branches:
-      - develop  # Testing deployment on PR to develop
+      - master     # Production deployment
   workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
@@ -19,12 +15,12 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ROOT_PASSWORD: secret
-          MYSQL_DATABASE: userone
+          MYSQL_ROOT_PASSWORD: ptnduj95jq8h3r3l
+          MYSQL_DATABASE: arnzsrctr6a41zuj
         ports:
           - 3306:3306
         options: >-
-          --health-cmd="mysqladmin ping --host=127.0.0.1 --password=secret"
+          --health-cmd="mysqladmin ping --host=yhrz9vns005e0734.cbetxkdyhwsb.us-east-1.rds.amazonaws.com --password=ptnduj95jq8h3r3l"
           --health-timeout=30s
           --health-retries=10
 
@@ -75,113 +71,6 @@ jobs:
 
       - name: Run Tests
         run: php artisan test --env=development
-
-  # Testing Stage
-  testing:
-    runs-on: ubuntu-latest
-    needs: development # Waits for the development job to complete
-
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: secret
-          MYSQL_DATABASE: userone
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping --host=127.0.0.1 --password=secret"
-          --health-timeout=30s
-          --health-retries=10
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.1'
-          extensions: mbstring, pdo, pdo_mysql, bcmath, xml
-
-      - name: Install Dependencies
-        run: composer install --no-interaction --prefer-dist
-
-      - name: Set up .env for Testing
-        run: |
-          cp .env.example .env
-          sed -i 's/APP_ENV=production/APP_ENV=testing/' .env
-          sed -i 's/APP_DEBUG=false/APP_DEBUG=true/' .env
-          sed -i 's/DB_HOST=127.0.0.1/DB_HOST=mysql/' .env
-          sed -i 's/DB_DATABASE=homestead/DB_DATABASE=userone/' .env
-          sed -i 's/DB_USERNAME=root/DB_USERNAME=root/' .env
-          sed -i 's/DB_PASSWORD=/DB_PASSWORD=secret/' .env
-
-      - name: Wait for MySQL
-        run: |
-          for i in {1..15}; do
-            if mysqladmin ping -hmysql -uroot -psecret --silent; then
-              echo "MySQL is ready"
-              break
-            fi
-            echo "Waiting for MySQL..."
-            sleep 5
-          done
-
-      - name: Run Automated Tests
-        run: php artisan test --env=testing
-
-  # Production Stage
-  production:
-    runs-on: ubuntu-latest
-    needs: testing # Waits for the testing job to complete
-
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: secret
-          MYSQL_DATABASE: userone
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping --host=127.0.0.1 --password=secret"
-          --health-timeout=30s
-          --health-retries=10
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.1'
-          extensions: mbstring, pdo, pdo_mysql, bcmath, xml
-
-      - name: Install Dependencies
-        run: composer install --no-interaction --prefer-dist
-
-      - name: Set up .env for Production
-        run: |
-          cp .env.example .env
-          sed -i 's/APP_ENV=production/APP_ENV=production/' .env
-          sed -i 's/APP_DEBUG=false/APP_DEBUG=false/' .env
-          sed -i 's/DB_HOST=127.0.0.1/DB_HOST=mysql/' .env
-          sed -i 's/DB_DATABASE=homestead/DB_DATABASE=userone/' .env
-          sed -i 's/DB_USERNAME=root/DB_USERNAME=root/' .env
-          sed -i 's/DB_PASSWORD=/DB_PASSWORD=secret/' .env
-
-      - name: Wait for MySQL
-        run: |
-          for i in {1..15}; do
-            if mysqladmin ping -hmysql -uroot -psecret --silent; then
-              echo "MySQL is ready"
-              break
-            fi
-            echo "Waiting for MySQL..."
-            sleep 5
-          done
 
       - name: Run Migrations and Seeders
         run: php artisan migrate --force --seed
