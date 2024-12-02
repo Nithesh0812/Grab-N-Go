@@ -24,7 +24,7 @@ class AuthenticationTest extends TestCase
 
         $response = $this->post('/login', [
             'email' => $user->email,
-            'password' => Hash::make('password'),
+            'password' => $user->password,
         ]);
 
         $this->assertAuthenticated();
