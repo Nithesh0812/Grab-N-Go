@@ -58,7 +58,7 @@ jobs:
       - name: Test MySQL Connectivity
         run: |
           for i in {1..10}; do
-            if mysql --hyhrz9vns005e0734.cbetxkdyhwsb.us-east-1.rds.amazonaws.com -uer4am30ec35y6cw6 -pptnduj95jq8h3r3l -e "SHOW DATABASES;"; then
+            if mysql -hyhrz9vns005e0734.cbetxkdyhwsb.us-east-1.rds.amazonaws.com -uer4am30ec35y6cw6 -pptnduj95jq8h3r3l -e "SHOW DATABASES;"; then
               echo "Connection successful!"
               break
             fi
