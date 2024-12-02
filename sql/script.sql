@@ -1,19 +1,19 @@
-INSERT INTO `categories` (`id`, `created_at`, `updated_at`, `category_name`) VALUES
+INSERT INTO categories (id, created_at, updated_at, category_name) VALUES
 (1, '2024-09-24 09:52:19', '2024-09-24 09:52:19', 'basic'),
 (2, '2024-09-24 09:52:36', '2024-09-24 09:52:36', 'burger king'),
 (3, '2024-09-24 09:52:49', '2024-09-24 09:52:49', 'chick-fil-a'),
 (4, '2024-09-24 09:53:04', '2024-09-24 09:53:04', 'fuzzys'),
 (5, '2024-09-24 09:53:16', '2024-09-24 09:53:16', 'starbucks');
 
-INSERT INTO `products` (`id`, `title`, `description`, `image`, `quantity`, `price`, `discount_price`, `play`, `created_at`, `updated_at`, `category`) VALUES
+INSERT INTO products (id, title, description, image, quantity, price, discount_price, play, created_at, updated_at, category) VALUES
 (1, 'Top Sirloin', 'Can be ordered rare , medium well or done', '1727183102.avif', '100', '10', '9', NULL, '2024-09-24 10:05:02', '2024-09-24 10:05:02', 'basic'),
 (2, 'Boneless Wings', '6 pc wings', '1727183203.avif', '60', '20', '15', NULL, '2024-09-24 10:06:43', '2024-09-24 10:06:43', 'basic'),
 (3, 'Brew Pub Loaded Waffle Fries', 'Waffle fries topped with spicy sauce and melted cheese', '1727183263.avif', '70', '40', '30', NULL, '2024-09-24 10:07:43', '2024-09-24 10:07:43', 'basic'),
 (4, 'Cinnabon Mini Swirls', 'Really good', '1727183381.avif', '50', '15', '10', NULL, '2024-09-24 10:09:41', '2024-09-24 10:09:41', 'basic'),
 (5, 'Double-Glazed Baby Back Ribs', 'Really good', '1727183439.avif', '40', '10', '9', NULL, '2024-09-24 10:10:39', '2024-09-24 10:10:39', 'basic'),
 (6, 'Kids Cheesy Pizza', 'really good', '1727183601.avif', '40', '15', '10', NULL, '2024-09-24 10:13:21', '2024-09-24 10:13:21', 'basic'),
-(7, 'Shrimp \'N Parmesan Sirloin', 'Really good', '1727183644.avif', '50', '20', '15', NULL, '2024-09-24 10:14:04', '2024-09-24 10:14:04', 'basic'),
-(8, 'Sizzlin\' Butter Pecan Blondie', 'Really good', '1727184387.avif', '70', '20', '15', NULL, '2024-09-24 10:26:27', '2024-09-24 10:26:27', 'basic'),
+(7, 'Shrimp N Parmesan Sirloin', 'Really good', '1727183644.avif', '50', '20', '15', NULL, '2024-09-24 10:14:04', '2024-09-24 10:14:04', 'basic'),
+(8, 'Sizzlin Butter Pecan Blondie', 'Really good', '1727184387.avif', '70', '20', '15', NULL, '2024-09-24 10:26:27', '2024-09-24 10:26:27', 'basic'),
 (9, 'Southwest Chicken Bowl', 'Really good', '1727184439.avif', '70', '40', '35', NULL, '2024-09-24 10:27:19', '2024-09-24 10:27:19', 'basic'),
 (10, 'Spinach & Artichoke Dip', 'Really good', '1727184476.avif', '50', '20', '15', NULL, '2024-09-24 10:27:56', '2024-09-24 10:27:56', 'basic'),
 (11, 'Tex-Mex Shrimp Bowl', 'Really good', '1727184515.avif', '60', '10', '5', NULL, '2024-09-24 10:28:35', '2024-09-24 10:28:35', 'basic'),
@@ -54,7 +54,7 @@ INSERT INTO `products` (`id`, `title`, `description`, `image`, `quantity`, `pric
 (46, 'Starbucks Frappuccino', 'Really good', '1727188440.jpg', '80', '30', '20', NULL, '2024-09-24 11:34:00', '2024-09-24 11:34:00', 'starbucks'),
 (48, 'Pizza', '14 INCH CHEEZY PIZZA', '1732239870.png', '200', '10', NULL, NULL, '2024-11-22 01:44:30', '2024-11-22 01:44:30', 'burger king');
 
-INSERT INTO `restaurants` (`id`, `name`, `campus_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO restaurants (id, name, campus_id, created_at, updated_at) VALUES
 (1, 'Chick-fil-A', 5, '2024-09-24 14:31:41', '2024-09-24 14:31:41'),
 (2, 'Burger King', 5, '2024-09-24 14:31:41', '2024-09-24 14:31:41'),
 (3, 'Fuzzys', 5, '2024-09-24 14:31:41', '2024-09-24 14:31:41'),
@@ -67,7 +67,7 @@ INSERT INTO `restaurants` (`id`, `name`, `campus_id`, `created_at`, `updated_at`
 (10, 'Basic', 8, '2024-11-22 00:17:44', '2024-11-22 00:17:44');
 
 
-INSERT INTO `users` (`id`, `name`, `email`, `usertype`, `phone`, `address`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `university`, `created_at`, `updated_at`) VALUES
+INSERT INTO users (id, name, email, usertype, phone, address, email_verified_at, password, two_factor_secret, two_factor_recovery_codes, two_factor_confirmed_at, remember_token, current_team_id, profile_photo_path, university, created_at, updated_at) VALUES
 (2, 'KELLY WASO', 'bandomerchs@gmail.com', '0', '0796805067', 'bandodriller@gmail.com', '2024-09-24 13:38:50', '$2y$10$NVe5qcrt7HaHITr0MxM5d.NvY7C3h9r4HrLRyQcWONKMVL7Wd7/IG', NULL, NULL, NULL, NULL, NULL, NULL, 'UNT Main Campus', '2024-09-24 13:37:58', '2024-09-24 13:38:58'),
 (3, 'FIODA MAKENZIE', 'bandodriller@gmail.com', '0', '0731699908', 'India', '2024-09-25 07:37:15', '$2y$10$Vm1R1Cz3J8wZXwRJgG2p7uVzS50rrjANzMvYlkcVr9Cy8UC7vj2pi', NULL, NULL, NULL, NULL, NULL, NULL, 'UNT Main Campus', '2024-09-25 07:33:23', '2024-09-25 07:41:20'),
 (4, 'Test1', 'communications@gmail.com', '1', '0796805067', '16', '2024-09-25 17:06:39', '$2y$10$KmcC5xtA1SuY3pbaRfVQmeb4qHYW/GEHpEcrdZKAaR.t1knpY1CQa', NULL, NULL, NULL, NULL, NULL, NULL, 'Discovery Park Campus', '2024-09-25 14:04:08', '2024-09-25 14:07:28'),
