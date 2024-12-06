@@ -74,7 +74,7 @@
                                <div class="row">
                                    <div class="col col-md-4"> <input type="number" name="quantity" value="1" min="1" style="width: 100px; color: black"></div>
                                    <div style="width: 60px;color: black; margin: 0px;">
-                                    <label for="time" style="color: black padding-right: 0 rem;padding-left: 0 rem; ">Time:</label>
+                                    <label for="time" style="color: black; padding-right: 0 rem;padding-left: 0 rem;font-weight: bold;">Time:</label>
                                         <select name="time" id="time" style="width: 60px;color: black ">
                                             @foreach($times as $time)
                                                 <option style="width: 20px;color: black " value="{{ $time }}">{{ $time }}</option>
